@@ -1,13 +1,45 @@
-const User = require('./User');
-const Bands = require('./Nsync');
+const bands = require('./bands');
+const venue = require('./venue');
+const fans = require('./fans');
+const show = require('./show');
 
-User.hasMany(Bands, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+fans.belongsToMany(concerts, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: show,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'planned_trips'
 });
 
-Bands.belongsTo(User, {
-  foreignKey: 'user_id'
+concerts.belongsToMany(fans, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: show,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'location_travellers'
 });
 
-module.exports = { User, Bands };
+fans.belongsToMany(bands, {
+    // Define the third table needed to store the foreign keys
+    through: {
+      model: show,
+      unique: false
+    },
+    // Define an alias for when data is retrieved
+    as: 'location_travellers'
+  });
+
+bands.belongsToMany(fans, {
+    // Define the third table needed to store the foreign keys
+    through: {
+      model: show,
+      unique: false
+    },
+    // Define an alias for when data is retrieved
+    as: 'location_travellers'
+  });
+module.exports = { Traveller, Location, Trip };
