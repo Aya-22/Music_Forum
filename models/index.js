@@ -1,5 +1,5 @@
 const User = require('./User');
-const Bands = require('./Bands');
+const Bands = require('./Nsync');
 
 User.hasMany(Bands, {
   foreignKey: 'user_id',
