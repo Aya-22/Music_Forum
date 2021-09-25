@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Bands extends Model {}
+class Nsync extends Model {}
 
-Bands.init(
+Nsync.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -36,8 +36,8 @@ Bands.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'nsync',
   }
 );
 
-module.exports = Bands;
+module.exports = Nsync;
