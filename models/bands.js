@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Nsync extends Model {}
+class bands extends Model {}
 
-Nsync.init(
+bands.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,19 +11,22 @@ Nsync.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    band_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    genre: {
       type: DataTypes.STRING,
     },
-    date_created: {
+    album_names: {
+      type: DataTypes.STRING,
+    },
+    band_debute_date: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    user_id: {
+    fans_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
@@ -36,8 +39,8 @@ Nsync.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'nsync',
+    modelName: 'bands',
   }
 );
 
-module.exports = Nsync;
+module.exports = bands;
