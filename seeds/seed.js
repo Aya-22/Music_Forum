@@ -1,8 +1,10 @@
 const sequelize = require('../config/connection');
 const { User, Music } = require('../models');
 
+// uses the user login information
 const userData = require('./userData.json');
-const projectData = require('./musicData.json');
+// users comment section 
+const musicData = require('./musicData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
