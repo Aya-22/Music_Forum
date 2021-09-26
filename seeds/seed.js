@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Music } = require('../models');
+const { bands, fans, venue } = require('../models');
 
 // uses the user login information
 const userData = require('./userData.json');
@@ -9,14 +9,18 @@ const musicData = require('./musicData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
+  const trs = await Traveller.bulkCreate(travellerSeedData);
+
+  const locations = await Location.bulkCreate(locationSeedData);
+
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
 
-  for (const music of musicData) {
-    await Music.create({
-      ...music,
+  for (const project of projectData) {
+    await Nsync.create({
+      ...project,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
