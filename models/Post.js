@@ -36,11 +36,7 @@ Post.init(
     concert_id: {
       type: DataTypes.INTEGER,
       references: {
-<<<<<<< HEAD
-        model: 'bands',
-=======
         model: 'concert',
->>>>>>> main
         key: 'id',
         unique: false
       }

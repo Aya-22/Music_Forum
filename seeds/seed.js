@@ -1,20 +1,9 @@
 const sequelize = require('../config/connection');
 const { Bands, Users, Shows, Venue } = require('../models');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-// uses the user login information
 const userData = require('./userData.json');
-// users comment section 
-const musicData = require('./musicData.json');
-=======
-const fanData = require('./fanData.json');
-=======
-const userData = require('./userData.json');
->>>>>>> main
 const bandData = require('./bandData.json');
 const venueData = require('./venueData.json');
->>>>>>> main
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
