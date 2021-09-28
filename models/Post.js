@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Trip model
-class Concerts extends Model {}
+class Post extends Model {}
 
 // create fields/columns for Trip model
-Concerts.init(
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,23 +13,22 @@ Concerts.init(
       primaryKey: true,
       autoIncrement: true
     },
-    show_times: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    band_playing: {
+    post: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 1
-    },
-    venue_id: {
-      type: DataTypes.STRING,
-      allowNull: false
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       references: {
         model: 'user',
+        key: 'id',
+        unique: false
+      }
+    },
+    band_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'bands',
         key: 'id',
         unique: false
       }
@@ -40,8 +39,8 @@ Concerts.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'concerts'
+    modelName: 'post'
   }
 );
 
-module.exports = Concerts;
+module.exports = Post;
