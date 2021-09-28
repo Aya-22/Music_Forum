@@ -1,45 +1,45 @@
-const bands = require('./bands');
-const venue = require('./venue');
-const fans = require('./fans');
-const show = require('./show');
+const Bands = require('./Bands');
+const Venue = require('./Venue');
+const Fans = require('./Fans');
+const Shows = require('./Shows');
 
-fans.belongsToMany(concerts, {
+Fans.belongsToMany(Venue, {
   // Define the third table needed to store the foreign keys
   through: {
-    model: show,
+    model: Shows,
     unique: false
   },
   // Define an alias for when data is retrieved
   as: 'planned_trips'
 });
 
-concerts.belongsToMany(fans, {
+Venue.belongsToMany(Fans, {
   // Define the third table needed to store the foreign keys
   through: {
-    model: show,
+    model: Shows,
     unique: false
   },
   // Define an alias for when data is retrieved
   as: 'location_travellers'
 });
 
-fans.belongsToMany(bands, {
+Fans.belongsToMany(Bands, {
     // Define the third table needed to store the foreign keys
     through: {
-      model: show,
+      model: Shows,
       unique: false
     },
     // Define an alias for when data is retrieved
     as: 'location_travellers'
   });
 
-bands.belongsToMany(fans, {
+Bands.belongsToMany(Fans, {
     // Define the third table needed to store the foreign keys
     through: {
-      model: show,
+      model: Shows,
       unique: false
     },
     // Define an alias for when data is retrieved
     as: 'location_travellers'
   });
-module.exports = { Traveller, Location, Trip };
+module.exports = { Bands, Fans, Shows, Venue };
