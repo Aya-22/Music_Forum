@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Nsync, User } = require('../models');
+const { Band, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const nsyncData = await Nsync.findAll({
+    const bandData = await Band.findAll({
       include: [
         {
           model: User,
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const projects = nsyncData.map((project) => project.get({ plain: true }));
+    const projects = bandData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -27,9 +27,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/nsync/:id', async (req, res) => {
+router.get('/band/:id', async (req, res) => {
   try {
-    const projectData = await Nsync.findByPk(req.params.id, {
+    const projectData = await Band.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -38,7 +38,7 @@ router.get('/nsync/:id', async (req, res) => {
       ],
     });
 
-    const project = nsyncData.get({ plain: true });
+    const project = bandData.get({ plain: true });
 
     res.render('project', {
       ...project,
@@ -55,7 +55,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Nsync }],
+      include: [{ model: Band }],
     });
 
     const user = userData.get({ plain: true });
