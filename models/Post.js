@@ -1,43 +1,46 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Nsync extends Model {}
+// create our Trip model
+class Post extends Model {}
 
-Nsync.init(
+// create fields/columns for Trip model
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
-    name: {
+    post: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       references: {
         model: 'user',
         key: 'id',
-      },
+        unique: false
+      }
     },
+    band_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'bands',
+        key: 'id',
+        unique: false
+      }
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'nsync',
+    modelName: 'post'
   }
 );
 
-module.exports = Nsync;
+module.exports = Post;

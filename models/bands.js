@@ -1,47 +1,46 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Trip model
-class Concerts extends Model {}
+class Bands extends Model {}
 
-// create fields/columns for Trip model
-Concerts.init(
+Bands.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    show_times: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    band_playing: {
+    band_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 1
     },
-    venue_id: {
+    genre: {
       type: DataTypes.STRING,
-      allowNull: false
     },
-    user_id: {
+    album_names: {
+      type: DataTypes.STRING,
+    },
+    band_debute_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    fans_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
-        unique: false
-      }
-    }
+      },
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'concerts'
+    modelName: 'bands',
   }
 );
 
-module.exports = Concerts;
+module.exports = Bands;
