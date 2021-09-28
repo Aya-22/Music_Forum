@@ -40,7 +40,7 @@ Concerts.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'concerts'
+    modelName: 'concert'
   }
 );
 

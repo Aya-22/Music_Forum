@@ -22,12 +22,12 @@ Post.belongsTo(Users, {
 });
 
 Concert.hasMany(Post, {
-  foreignKey: 'post_id',
+  foreignKey: 'concert_id',
   onDelete: 'CASCADE'
 });
 
 Post.belongsTo(Concert, {
-  foreignKey: 'post_id'
+  foreignKey: 'concert_id'
 });
 
 Users.belongsToMany(Band, {
