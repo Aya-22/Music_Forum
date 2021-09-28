@@ -1,7 +1,7 @@
 const sequelize = require('../config/connection');
-const { Bands, Fans, Shows, Venue } = require('../models');
+const { Bands, Users, Shows, Venue } = require('../models');
 
-const fanData = require('./fanData.json');
+const userData = require('./userData.json');
 const bandData = require('./bandData.json');
 const venueData = require('./venueData.json');
 
@@ -12,7 +12,7 @@ const seedDatabase = async () => {
 
   const venue = await Venue.bulkCreate(venueData);
 
-  const fan = await Fans.bulkCreate(fanData, {
+  const user = await Users.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
