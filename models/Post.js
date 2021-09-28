@@ -32,6 +32,14 @@ Post.init(
         key: 'id',
         unique: false
       }
+    },
+    concert_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'bands',
+        key: 'id',
+        unique: false
+      }
     }
   },
   {
