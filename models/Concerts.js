@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Trip model
-class Show extends Model {}
+class Concerts extends Model {}
 
 // create fields/columns for Trip model
-Show.init(
+Concerts.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -22,7 +22,7 @@ Show.init(
       allowNull: false,
       defaultValue: 1
     },
-    venue: {
+    venue_id: {
       type: DataTypes.STRING,
       references: {
         model: 'venue',
@@ -30,7 +30,7 @@ Show.init(
         unique: false
       }
     },
-    fans: {
+    fans_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'fans',
@@ -44,8 +44,8 @@ Show.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Show'
+    modelName: 'concerts'
   }
 );
 
-module.exports = Show;
+module.exports = Concerts;
