@@ -18,7 +18,7 @@ Post.init(
       allowNull: false,
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
@@ -29,6 +29,14 @@ Post.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'bands',
+        key: 'id',
+        unique: false
+      }
+    },
+    concert_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'concert',
         key: 'id',
         unique: false
       }
