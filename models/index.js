@@ -1,45 +1,40 @@
-const Bands = require('./Bands');
-const Venue = require('./Venue');
-const Fans = require('./Fans');
-const Shows = require('./Shows');
+const Users = require('./Users');
+const Concert = require('./Concerts');
+const Band = require( './Bands' );
+const Post = require('./Post');
 
-Fans.belongsToMany(Venue, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Shows,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'planned_trips'
+Users.hasMany(Concert, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
 });
 
-Venue.belongsToMany(Fans, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Shows,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'location_travellers'
+Concert.belongsTo(Users, {
+  foreignKey: 'user_id'
 });
 
-Fans.belongsToMany(Bands, {
-    // Define the third table needed to store the foreign keys
-    through: {
-      model: Shows,
-      unique: false
-    },
-    // Define an alias for when data is retrieved
-    as: 'location_travellers'
-  });
+Users.hasMany(Post, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-Bands.belongsToMany(Fans, {
-    // Define the third table needed to store the foreign keys
-    through: {
-      model: Shows,
-      unique: false
-    },
-    // Define an alias for when data is retrieved
-    as: 'location_travellers'
-  });
-module.exports = { Bands, Fans, Shows, Venue };
+Post.belongsTo(Users, {
+  foreignKey: 'user_id'
+});
+
+Concert.hasMany(Post, {
+  foreignKey: 'post_id',
+  onDelete: 'CASCADE'
+});
+
+Post.belongsTo(Concert, {
+  foreignKey: 'post_id'
+});
+
+Users.belongsToMany(Band, {
+  through: 'band_fans'
+})
+Band.belongsToMany(Users, {
+  through: 'band_fans'
+})
+
+module.exports = { Users, Concert, Post, Band };
