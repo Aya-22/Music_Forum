@@ -1,6 +1,10 @@
 const router = require('express').Router();
-const { Band, User, Concert, Post, Users} = require('../models');
+const { Band, Concert, Post, Users} = require('../models');
 const withAuth = require('../utils/auth');
+
+// router.get ('/', (req, res)=>{
+//   res.send('hello')
+// });
 
 router.get('/', async (req, res) => {
   try {
