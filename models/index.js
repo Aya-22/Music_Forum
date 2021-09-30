@@ -37,4 +37,13 @@ Band.belongsToMany(Users, {
   through: 'band_fans'
 })
 
+Band.hasMany(Post, {
+  foreignKey: 'band_id',
+  onDelete: 'CASCADE'
+});
+
+Post.belongsTo(Band, {
+  foreignKey: 'band_id'
+});
+
 module.exports = { Users, Concert, Post, Band };

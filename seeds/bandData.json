@@ -1,16 +1,16 @@
 [
   {
-    "band_name": "Mariah Carey",
+    "name": "Mariah Carey",
     "genre": "Pop",
     "album_names": "Butterfly, Emotions, Merry Christmas"
   },
   {
-    "band_name": "Nirvana",
+    "name": "Nirvana",
     "genre": "Pop Rock",
     "album_names": "Nevermind, In Utero, Hormoaning"
   },
   {
-    "band_name": "Nsync",
+    "name": "Nsync",
     "genre": "Pop, dance",
     "album_names": "No Strings Attached, Celebrity, The Winter Album"
   }

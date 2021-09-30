@@ -33,10 +33,14 @@ router.get('/', async (req, res) => {
 
 router.get('/post/:id', async (req, res) => {
   try {
-    const postData = await Band.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: Users,
+          model: Users, 
+          attributes: ['name'],
+        },
+        {
+          model: Band, 
           attributes: ['name'],
         },
       ],

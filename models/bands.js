@@ -11,7 +11,7 @@ Bands.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    band_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

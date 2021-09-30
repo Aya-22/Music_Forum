@@ -14,7 +14,7 @@ const seedDatabase = async () => {
 
   for (const band of bandData) {
     await Band.create({
-      ...Band,
+      ...band,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
