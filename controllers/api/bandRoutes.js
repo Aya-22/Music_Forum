@@ -1,38 +1,67 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Users, Band } = require('../../models');
 
-router.post('/', withAuth, async (req, res) => {
+// GET all bands
+router.get('/', async (req, res) => {
   try {
-    const newPost = await Post.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    const bandData = await Band.findAll({
+      include: [{ model: Users }],
+    });
+    res.status(200).json(bandData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET a single band
+router.get('/:id', async (req, res) => {
+  try {
+    const bandData = await Band.findByPk(req.params.id, {
+      include: [{ model: Users }],
     });
 
-    res.status(200).json(newPost);
+    if (!bandData) {
+      res.status(404).json({ message: 'No band found with that id!' });
+      return;
+    }
+
+    res.status(200).json(bandData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// CREATE a band
+router.post('/', async (req, res) => {
+  try {
+    const groupData = await Band.create({
+      reader_id: req.body.reader_id,
+    });
+    res.status(200).json(groupData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+// DELETE a band
+router.delete('/:id', async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const groupData = await Band.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
+    if (!groupData) {
+      res.status(404).json({ message: 'No band found with that id!' });
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json(groupData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 module.exports = router;
+
