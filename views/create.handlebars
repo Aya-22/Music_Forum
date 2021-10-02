@@ -9,16 +9,12 @@
     <h3>Create a New Post:</h3>
 
     <form class="form new-post-form">
-      <div class="form-group">
-        <label for="post-name">Post name:</label>
-        <input class="form-input" type="text" id="post-name" name="post-name" />
-      </div>
-      <div class="form-group">
+      {{!-- <div class="form-group">
         <label for="band-name">Band Name:</label>
-        <input class="form-input" type="number" id="band-name" name="band-name" />
-      </div>
+        <input class="form-input" type="string" id="band-name" name="band-name" />
+      </div> --}}
       <div class="form-group">
-        <label for="post-desc">My Post:</label>
+        <label for="post-desc">Message:</label>
         <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
       </div>
       <div class="form-group">
@@ -27,11 +23,9 @@
     </form>
   </div>
 
-  {{#if post.length}}
   <div class="col-md-6 project-list">
     <h3>Current Posts:</h3>
-
-    {{#each post as |post|}}
+    {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.post}}</a></h4>
@@ -42,7 +36,5 @@
     </div>
     {{/each}}
   </div>
-  {{/if}}
-</div>
 
-<script src="./js/profile.js"></script>
+  <script src="/js/profile.js"></script>
