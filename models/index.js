@@ -1,6 +1,6 @@
 const Users = require('./Users');
 const Concert = require('./Concerts');
-const Band = require( './Bands' );
+const Band = require( './bands' );
 const Post = require('./Post');
 
 Users.hasMany(Concert, {
