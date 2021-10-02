@@ -2,11 +2,19 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#post-name').value.trim();
+
+  const needed_funding = document.querySelector('#band-name').value.trim();
+  const description = document.querySelector('#post-desc').value.trim();
+
+  if (name && needed_funding && description) {
+    const response = await fetch(`/api/posts`, {
+
   const band_name = document.querySelector('#band-name').value.trim();
   const description = document.querySelector('#post-desc').value.trim();
 
   if (name && band_name && description) {
     const response = await fetch(`/api/projects`, {
+
       method: 'POST',
       body: JSON.stringify({ name, needed_funding, description }),
       headers: {
