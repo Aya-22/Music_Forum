@@ -22,9 +22,9 @@ router.get('/', async (req, res) => {
     const post = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      post, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      post,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -36,11 +36,11 @@ router.get('/post/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: Users, 
+          model: Users,
           attributes: ['name'],
         },
         {
-          model: Band, 
+          model: Band,
           attributes: ['name'],
         },
         {
@@ -60,7 +60,7 @@ router.get('/post/:id', async (req, res) => {
     console.log(post);
     res.render('post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err)
@@ -81,7 +81,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('create', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     console.log(err)
