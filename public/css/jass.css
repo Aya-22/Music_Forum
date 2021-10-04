@@ -359,7 +359,7 @@ body {
   /* font-family: -apple-system, BebasNeueFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; */
   font-family: 'Bebas Neue', cursive;
   font-size: 16px;
-  color: #1a1a1a;
+  color: #fffdfd;
 }
 
 h1,
@@ -981,7 +981,7 @@ a:hover {
   border-radius: 0.3rem;
   border: 1px solid transparent;
   outline: none;
-  color: #1a1a1a;
+  color: #f9f7f7;
   background-color: #aeaeae;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
