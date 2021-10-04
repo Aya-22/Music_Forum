@@ -32,8 +32,7 @@ main {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1
-{ 
+h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -58,7 +57,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: 'Bebas Neue', cursive;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -101,7 +100,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: 'Bebas Neue', cursive;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -357,7 +356,8 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  /* font-family: -apple-system, BebasNeueFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; */
+  font-family: 'Bebas Neue', cursive;
   font-size: 16px;
   color: #1a1a1a;
 }
@@ -421,12 +421,13 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #a31f42;
   text-decoration: none;
+  text-shadow: 2px 2px rgb(67, 70, 69);
 }
 
 a:hover {
-  color: #065b83;
+  color: #430433;
   text-decoration: underline;
 }
 
@@ -1144,7 +1145,7 @@ form .form-input {
   width: 100%;
   padding: 0.75rem;
   color: #1a1a1a;
-  background-color: #ffffff;
+  background-color: #afc8d6;
   margin: 0.625rem 0;
   font-size: 1.2rem;
   border: 1px solid #484848;
@@ -1160,8 +1161,8 @@ form [type='radio'] {
   display: inline-block;
 }
 
-label form [type='checkbox'], label
-form [type='radio'] {
+label form [type='checkbox'],
+label form [type='radio'] {
   display: inline-block;
 }
 
