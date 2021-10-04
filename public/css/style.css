@@ -12,11 +12,11 @@ header, .project:not(:last-child) {
 }
 
 .no-button {
-  background: none;
+  background: wheat;
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #a31f42;
   text-decoration: none;
   font-size: 100%;
 }
