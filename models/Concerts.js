@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Trip model
+// create our Concerts model
 class Concerts extends Model {}
 
-// create fields/columns for Trip model
+// create fields/columns for Concerts model
 Concerts.init(
   {
     id: {
