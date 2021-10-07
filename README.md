@@ -13,7 +13,7 @@ When you land on the homepage you'll be able to view all the posts from multiple
 * Returning users will be asked to log back in 
 * Once signed in, user can create their own posts or comment on others.
 
-![screenshot of app. fireworks at a concert](~/Desktop/Development/Project_2/Music_Forum/assets)
+![screenshot of app. fireworks at a concert](~/Desktop/Development/Project_2/Music_Forum/assets/musicforum.png)
 
 ### links
 
